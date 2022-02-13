@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<br><br><br>
+<div class="container">
+    <div class="row">
+        {% for pros in projects %}
+        <div class="col-md-6 card">
+
+            <div class="card-group">
+                <div class="">
+                    <h3 class="card-title text-center"> {{pros.title}}</h3>
+                    
+                        <img src="{{ pros.image.url }}" class="card-img-top resp" alt="">
+                
+                    <div class="card-body">
+                        <h5 class="card-title"> <i>Built using; {{pros.techs_used}}</i></h5>
+                        <p class="card-text">{{pros.description}}</p>
+
+
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-md-6">
+                            <a href="{{pros.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">
+                                Repository</a>
+                        </div>
+
+
+                        <div class="card-footer">
+                            <small class="text-muted"> {{pros.date|date}}</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'add_project' %}"><button class="btn btn-outline-dark bg-dark text-white rounded-pill">Add Project</button></a>
+</div>
+
+{% endblock %}
